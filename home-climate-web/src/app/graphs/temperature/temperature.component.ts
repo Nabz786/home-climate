@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ClimateService } from "../../../services/climate-service.service";
+import { ClimateService } from "../../services/climate-service.service";
 import { map } from 'rxjs/operators';
 import { ChartDataSets } from "chart.js";
 import { Label } from "ng2-charts";
