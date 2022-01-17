@@ -30,16 +30,21 @@ export class HumidityComponent implements OnInit{
 	public ngOnInit(): void {
 		this.climateService.$climate
 			.pipe(
-				map(h => h.humidity)
+				map(climateObject => {
+					return {
+						humidity: climateObject.humidity,
+						time: climateObject.timestamp
+					}
+				})
 			)
-			.subscribe((humidity: number) => {
-				this.insertNewHumidityValue(humidity);
+			.subscribe((humidityObject: { humidity: number, time: string }) => {
+				this.insertNewHumidityValue(humidityObject);
 			});
 	}
 
-	private insertNewHumidityValue(humidity: number): void {
-		this.chartData[0].data.push(humidity);
-		this.chartLabels.push((this.index++).toString());
+	private insertNewHumidityValue(humidityObject: { humidity: number, time: string }): void {
+		this.chartData[0].data.push(humidityObject.humidity);
+		this.chartLabels.push(humidityObject.time);
 
 		// For cleanliness only display 10 values max on the chart, if an insert will increase then length
 		// passed that threshhold, begin removing the first data point
