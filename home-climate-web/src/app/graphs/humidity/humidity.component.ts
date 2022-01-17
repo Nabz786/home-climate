@@ -13,7 +13,13 @@ export class HumidityComponent implements OnInit{
 
 	public chartType = "line";
 	public chartData: ChartDataSets[] = [
-		{ data: [], label: 'Humidity', backgroundColor: "#CBF3F9" }
+		{ 
+			data: [], 
+			label: 'Humidity', 
+			backgroundColor: "rgba(66, 165, 245, 0.4)",
+			borderColor: "rgb(66, 165, 245)",
+			pointBackgroundColor: "rgb(240, 56, 255)",
+		}
 	];
 
 	public chartLabels: Label[] = [];
@@ -26,9 +32,20 @@ export class HumidityComponent implements OnInit{
 			.pipe(
 				map(h => h.humidity)
 			)
-			.subscribe((humidity) => {
-				this.chartData[0].data.push(humidity);
-				this.chartLabels.push((this.index++).toString());
+			.subscribe((humidity: number) => {
+				this.insertNewHumidityValue(humidity);
 			});
+	}
+
+	private insertNewHumidityValue(humidity: number): void {
+		this.chartData[0].data.push(humidity);
+		this.chartLabels.push((this.index++).toString());
+
+		// For cleanliness only display 10 values max on the chart, if an insert will increase then length
+		// passed that threshhold, begin removing the first data point
+		if (this.chartData[0].data.length > 10) {
+			this.chartData[0].data.shift();
+			this.chartLabels.shift();
+		}
 	}
 }

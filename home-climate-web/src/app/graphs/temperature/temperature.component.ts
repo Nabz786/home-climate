@@ -13,7 +13,12 @@ export class TemperatureComponent implements OnInit{
 
 	public chartType = "line";
 	public chartData: ChartDataSets[] = [
-		{ data: [], label: 'Temperature' },
+		{ 
+			data: [], 
+			label: 'Temperature', 
+			backgroundColor: "rgba(255, 183, 77, 0.4)",
+			borderColor: "rgb(255, 183, 77)"
+		}
 	];
 
 	public chartLabels: Label[] = [];
@@ -27,10 +32,21 @@ export class TemperatureComponent implements OnInit{
 			.pipe(
 				map(c => c.temp)
 			)
-			.subscribe((temperature: any) => {
-				this.chartData[0].data.push(temperature);
-				this.chartLabels.push((this.index++).toString());
+			.subscribe((temperature: number) => {
+				this.insertNewTemperatureValue(temperature);
 			})
+	}
+
+	private insertNewTemperatureValue(temperature: number): void {
+		this.chartData[0].data.push(temperature);
+		this.chartLabels.push((this.index++).toString());
+
+		// For cleanliness only display 10 values max on the chart, if an insert will increase then length
+		// passed that threshhold, begin removing the first data point
+		if (this.chartData[0].data.length > 10) {
+			this.chartData[0].data.shift();
+			this.chartLabels.shift();
+		}
 	}
 
 }
