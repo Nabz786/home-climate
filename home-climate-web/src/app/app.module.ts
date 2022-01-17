@@ -6,6 +6,7 @@ import { IMqttServiceOptions, MqttModule } from 'ngx-mqtt';
 import { AppComponent } from '../app/app.component';
 import { GraphComponent } from '../app/graphs/graph.component';
 import { TemperatureComponent } from '../app/graphs/temperature/temperature.component';
+import { HumidityComponent } from './graphs/humidity/humidity.component';
 
 export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   hostname: "192.168.1.82",
@@ -17,7 +18,8 @@ export const MQTT_SERVICE_OPTIONS: IMqttServiceOptions = {
   declarations: [
     AppComponent,
     GraphComponent,
-    TemperatureComponent
+    TemperatureComponent,
+    HumidityComponent
   ],
   imports: [
     BrowserModule,
