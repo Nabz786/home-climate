@@ -6,8 +6,8 @@ import json
 
 dhtDevice = adafruit_dht.DHT11(board.D4, use_pulseio=False)
 
-client = mqtt.Client("test_mqtt", transport='websockets');
-client.connect("localhost", 9001);
+client = mqtt.Client("pi_mqtt");
+client.connect("localhost", 1883);
 
 while True:
     try:
@@ -25,6 +25,7 @@ while True:
     
     #Runtime errors can occur fairly often, keep going if one occurs
     except RuntimeError as error:
+        print(error)
         time.sleep(3.0)
         continue
     except Exception as error:
@@ -34,3 +35,8 @@ while True:
     #We can poll the sensor once every 2 seconds, 10 should be sufficient
     time.sleep(10.0)
 
+
+
+#Common Runtime Errors
+#Checksum did not validate - the temp and humidty are represented as 16 bit numbers
+#When added they should equal the checksum, if they don't, it could indicate data corruption
