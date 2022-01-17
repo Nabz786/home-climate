@@ -15,9 +15,15 @@ while True:
         temperature_f = temperature_c * (9/5) + 32
         humidity = dhtDevice.humidity
 
+        #Get the current time
+        unformatted_localtime = time.localtime()
+        current_time = time.strftime("%H:%M", unformatted_localtime)
+        print(current_time)
+
         payload = {
             "temp": temperature_f,
-            "humidity": humidity
+            "humidity": humidity,
+            "timestamp": current_time
         }
         
         print("sending...")
@@ -33,7 +39,7 @@ while True:
         raise error
     
     #We can poll the sensor once every 2 seconds, 10 should be sufficient
-    time.sleep(10.0)
+    time.sleep(65.0)
 
 
 
