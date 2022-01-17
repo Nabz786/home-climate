@@ -1,5 +1,5 @@
-import { Component, Input } from "@angular/core";
-import { ChartDataSets } from "chart.js";
+import { Component, Input, OnChanges, SimpleChanges } from "@angular/core";
+import { ChartDataSets, ChartOptions } from "chart.js";
 import { Color, Label } from "ng2-charts";
 
 @Component({
@@ -15,7 +15,7 @@ export class GraphComponent {
 	@Input() chartType: string;
 	// @Input() plugins: any[];
 
-	public options: any = {
+	public options: ChartOptions = {
 		animation: {duration: 2000},
 		scales : {
 			yAxes: [{
@@ -24,11 +24,12 @@ export class GraphComponent {
 				},
 				ticks: {
 					beginAtZero: true,
-					//stepValue: 10,
-					steps: 10,
+					stepSize: 10,
 				  	max : 100,
 				}
-			}]
-		  }
+			}],
+		  },
+		responsive: true,
+		maintainAspectRatio: false
 	};
 }

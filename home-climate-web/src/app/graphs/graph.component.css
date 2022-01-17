@@ -1,0 +1,7 @@
+.graph-container {
+	width: 50%;
+	height: 30%;
+	/* border: gray 2px solid; */
+	margin: 3rem auto;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
