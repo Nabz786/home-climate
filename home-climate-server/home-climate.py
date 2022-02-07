@@ -39,7 +39,7 @@ while True:
         raise error
     
     #We can poll the sensor once every 2 seconds, 10 should be sufficient
-    time.sleep(65.0)
+    time.sleep(5.0)
 
 
 
