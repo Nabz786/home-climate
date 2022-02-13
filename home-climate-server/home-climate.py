@@ -15,15 +15,13 @@ while True:
         temperature_f = temperature_c * (9/5) + 32
         humidity = dhtDevice.humidity
 
-        #Get the current time
-        unformatted_localtime = time.localtime()
-        current_time = time.strftime("%H:%M", unformatted_localtime)
-        print(current_time)
+        #Get the current time in seconds since epoc - 1970
+        timestamp = time.time()
 
         payload = {
             "temp": temperature_f,
             "humidity": humidity,
-            "timestamp": current_time
+            "timestamp": timestamp
         }
         
         print("sending...")
