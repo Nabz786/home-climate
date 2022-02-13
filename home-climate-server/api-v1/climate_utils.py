@@ -16,7 +16,7 @@ def get_averages():
 
 '''
 Returns a dictionary containing the average of each climate parameter
-in a dictionary for the passed in interval
+for the passed in interval
 '''
 def get_average_climate_reading(climate_metrics, interval):
     time_threshold = (datetime.today() - timedelta(hours=interval, minutes=0)).timestamp()
