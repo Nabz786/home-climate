@@ -1,0 +1,13 @@
+<div class="historical-container">
+	<div *ngFor="let d of data" class="temp-humidity-container">
+		<span class="hour">{{ d.hourlyInterval }} Hours</span>
+		<div class="margin-top-10">
+			<span class="temperature">
+				{{ d.temperatureAverage }}&#176;, 
+			</span>
+			<span class="humidity">
+				{{ d.humidityAverage }}%
+			</span>
+		</div>
+	</div>
+</div>
