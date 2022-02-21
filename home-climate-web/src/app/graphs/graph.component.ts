@@ -28,7 +28,7 @@ export class GraphComponent {
 				  	max : 100,
 				}
 			}],
-		  },
+		},
 		responsive: true,
 		maintainAspectRatio: false
 	};
