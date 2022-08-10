@@ -15,7 +15,7 @@ export class HumidityComponent implements OnInit{
 	public chartData: ChartDataSets[] = [
 		{ 
 			data: [], 
-			label: 'Humidity', 
+			label: 'Humidity %', 
 			backgroundColor: "rgba(66, 165, 245, 0.4)",
 			borderColor: "rgb(66, 165, 245)",
 			pointBackgroundColor: "rgb(240, 56, 255)",
@@ -23,7 +23,6 @@ export class HumidityComponent implements OnInit{
 	];
 
 	public chartLabels: Label[] = [];
-	private index = 0;
 
 	constructor (private climateService: ClimateService) { }
 

@@ -1,0 +1,40 @@
+.historical-container {
+	width: 28%;
+	height: 8%;
+	margin: 3rem auto;
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+	display: flex;
+}
+
+.temp-humidity-container {
+	height: 80%; 
+	width: 21%; 
+	margin-left: 23px; 
+	text-align: center; 
+	margin-top: 2%;
+}
+
+.hour {
+	font-size: 20px; 
+	color: gray;
+}
+
+.margin-top-10 {
+	margin-top: 10%;
+}
+
+.temperature {
+	color: rgb(255, 183, 77); 
+	font-size: 33px;
+}
+
+.humidity {
+	color: rgb(66, 165, 245); 
+	font-size: 33px;
+}
+
+/* @media screen and (max-width: 1200px) {
+	.graph-container {
+		width: 80%;
+	}
+} */

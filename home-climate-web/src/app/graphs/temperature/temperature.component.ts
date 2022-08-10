@@ -15,7 +15,7 @@ export class TemperatureComponent implements OnInit{
 	public chartData: ChartDataSets[] = [
 		{ 
 			data: [], 
-			label: 'Temperature', 
+			label: 'Temperature ' + '\u00B0 F', 
 			backgroundColor: "rgba(255, 183, 77, 0.4)",
 			borderColor: "rgb(255, 183, 77)"
 		}
@@ -36,7 +36,7 @@ export class TemperatureComponent implements OnInit{
 			)
 			.subscribe((temperatureObject: {temperature: number, time: string}) => {
 				this.insertNewTemperatureValue(temperatureObject);
-			})
+			});
 	}
 
 	private insertNewTemperatureValue(temperatureObject: {temperature: number, time: string}): void {
